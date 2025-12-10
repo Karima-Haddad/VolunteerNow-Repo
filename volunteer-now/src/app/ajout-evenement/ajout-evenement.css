@@ -1,0 +1,317 @@
+/* ---------------------------
+GLOBAL PAGE CONTAINER
+--------------------------- */
+.main-container {
+  max-width: 1300px;
+  padding: 30px 70px;  
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ---------------------------
+   🟧 FORM CARD (FULL WIDTH PAR DÉFAUT) 
+--------------------------- */
+.card-hover {
+  margin: 0 auto;
+  width: 100%;               
+  background: #ffffff;
+  padding: 35px 40px;        
+  border-radius: 18px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eeeeee;
+}
+
+/* ---------------------------
+    TITRES 
+--------------------------- */
+.title-gradient {
+  font-size: 35px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffa600, #0096a7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: 15px;
+  margin-top: 6px;
+  color: #555;
+}
+
+/* ---------------------------
+   🟪 FORM LAYOUT
+--------------------------- */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #0096a7;
+}
+
+.icon-orange {
+  color: #ffa600;
+}
+
+/* ---------------------------
+   🟩 INPUTS
+--------------------------- */
+.input-field,
+.input-sm,
+textarea {
+  min-width: 1250px;
+  max-width: 1250px;
+  padding: 12px 15px;
+  font-size: 15px;
+  background: #fafafa;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.input-sm{
+  min-width: 1200px;
+  max-width: 1200px;
+  margin-top: 5px;
+  padding: 12px 15px;
+  font-size: 15px;
+  background: #fafafa;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.grid > div {
+  margin-bottom: 18px;
+}
+
+.location-card .grid > div {
+  margin-bottom: 20px;
+}
+
+.input-field:focus,
+.input-sm:focus,
+textarea:focus {
+  border-color: #21a7b2;
+  box-shadow: 0 0 6px rgba(21, 167, 178, 0.4);
+}
+
+textarea {
+  resize: none;
+}
+
+/* ---------------------------
+   🟧 SELECT STYLE
+--------------------------- */
+select.input-field,
+select.input-sm {
+  
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23333' width='16' height='16' xmlns='http://www.w3.org/2000/svg'><path d='M5 6l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* ---------------------------
+   🟦 RADIO BUTTONS
+--------------------------- */
+.status-open {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-closed {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.status-done {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* ---------------------------
+   📍 LOCALISATION CARD
+--------------------------- */
+.location-card {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0px 7px 22px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.location-card h3 {
+  color: #0096a7;
+  font-weight: 700;
+}
+
+/* ---------------------------
+   🗺️ CARTE
+--------------------------- */
+#map {
+  width: 100%;
+  height: 350px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------
+       BUTTONS 
+--------------------------- */
+/* Conteneur des boutons */
+.btn-row {
+  display: flex;
+  justify-content: flex-end;   
+  align-items: center;
+  gap: 14px;                  
+  margin-top: 20px;
+}
+
+/* Bouton Annuler */
+.btn-cancel {
+  background-color: white;
+  color: #ffa600;
+  padding: 12px 22px;
+  border-radius: 30px;
+  border: 2px solid #ffa600;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.btn-cancel:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Bouton Publier */
+.btn-submit {
+  background: linear-gradient(135deg, #ffa600a4, #0096a7);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+
+
+.tips-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding-left: 30px;
+  margin: 40px auto;
+}
+
+.tip-card {
+  min-width: 600px;
+  max-width: 650px;
+  padding: 22px;
+  border-radius: 16px;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.tip-orange {
+  background: #fff7e6;
+  border-left: 4px solid #ffa600;
+}
+
+.tip-blue {
+  background: #e8f7fa;
+  border-left: 4px solid #0096a7;
+}
+
+.tip-white {
+  background: #ffffff;
+  border-left: 4px solid #cccccc;
+}
+
+/* ---------------------------
+   📱 RESPONSIVE
+--------------------------- */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 20px 20px;
+  }
+
+  .card-hover {
+    padding: 25px;
+  }
+
+  .location-card {
+    padding: 20px 22px;
+  }
+
+  #map {
+    height: 300px;
+  }
+
+  .tips-grid {
+    flex-direction: column;
+  }
+}
+
+/* ---------------------------
+   📱 RESPONSIVE
+--------------------------- */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 20px;
+  }
+  
+  .card-hover {
+    padding: 20px;
+  }
+
+  .location-card {
+    padding: 20px;
+  }
+
+  .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

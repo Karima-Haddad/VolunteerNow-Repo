@@ -1,0 +1,51 @@
+<!-- ****************************HEADER PRINCIPAL**************************** -->
+<header >
+    <img class="logo" src="assets/Logo-horizontale.jpg" alt="Logo">
+  <button routerLink="/" class="login-btn" >Login</button>
+</header>
+
+<!-- ****************************BODY**************************** -->
+<div class="container" >
+    <h1>Ensemble, <span >agissons</span> pour demain</h1>
+    <h2>VolunteerNow connecte <span class="orange">bénévoles</span> et <span class="blue">associations</span> pour un impact réel.</h2>
+    <button routerLink="/inscription-oragnisation">Devenir partenaire</button>
+</div>
+
+<div class="infos">  <!--INFORMATIONS -->
+    <div class="description">
+        <div class="icon">🎯</div>
+        <span class="title">Notre Mission</span>
+        <p>Faciliter l’engagement citoyen en rendant le bénévolat <b>accessible, localisé et impactant.</b> Nous croyons que chaque action, aussi petite soit-elle, construit un monde plus solidaire.</p>
+    </div>
+
+     <div class="description">
+        <div class="icon">🌟</div>
+        <span class="title">Notre Vision</span>
+        <p>Un monde où <b>chaque personne</b> peut contribuer à des causes qui lui tiennent à cœur, et où <b>chaque association</b> trouve les volontaires dont elle a besoin.</p>
+    </div>
+</div>
+
+ <div class="impact">  <!--IMPACT EN VALEURS -->
+    <h1 class="title">📊 Impact en chiffres</h1>
+    <app-impact-section-component></app-impact-section-component>
+</div>
+
+<div class="equipe">  <!--EQUIPE -->
+    <h1 class="title">👥 L'équipe fondatrice</h1>
+    <div class="membersInfos">
+        <app-member *ngFor="let mem of members" [member]="mem"></app-member>
+    </div>
+</div>
+
+<div class="container">
+    <h1 style="color: #FFA500;">Prêt à faire la différence ?</h1>
+    <h2>Rejoignez la communauté VolunteerNow dès aujourd’hui.</h2>
+    <button routerLink="/inscription-benevole" class="inscrire">S'inscrire gratuitement</button>
+</div>
+
+
+<!-- ****************************FOOTER**************************** -->
+<app-footer></app-footer>
+
+
+<app-chatbot-button></app-chatbot-button>

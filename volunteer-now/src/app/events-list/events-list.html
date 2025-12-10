@@ -1,0 +1,57 @@
+<app-header-commun></app-header-commun>
+
+<section class="hero">
+  <h1>{{ title }}</h1>
+  <p *ngIf="mode === 'public'">
+    Participez à des actions solidaires et faites la différence dès aujourd’hui.
+  </p>
+
+  <div class="search-bar">
+    <input 
+      type="text" 
+      placeholder="🔍 Rechercher un événement par nom ou ville..."
+      [(ngModel)]="searchText"
+      (input)="onSearch()"
+    >
+  </div>
+</section>
+
+<section class="events">
+  <ng-container *ngIf="!loading; else loadingTpl">
+
+    <!-- Événements paginés -->
+    <app-event-card 
+      *ngFor="let ev of paginatedEvents" 
+      [event]="ev"
+      [isOrganization]="mode === 'organization'"
+      (editEvent)="handleEditEvent($event)"
+      (deleteEvent)="handleDeleteEvent($event)">
+    </app-event-card>
+
+    <!-- Aucun résultat -->
+    <div *ngIf="filteredEvents.length === 0" class="no-events">
+      Aucun événement trouvé pour le moment.
+    </div>
+
+    <!-- Pagination (visible seulement s'il y a plus de 9 événements) -->
+    <div class="pagination" *ngIf="filteredEvents.length > itemsPerPage">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">←</button>
+  <button 
+    *ngFor="let page of pagesArray"
+    (click)="setPage(page)"
+    [class.active]="page === currentPage"
+    [disabled]="page === '...'">
+    {{ page }}
+  </button>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">→</button>
+</div>
+
+  </ng-container>
+
+  <ng-template #loadingTpl>
+    <div class="loading">Chargement des événements…</div>
+  </ng-template>
+</section>
+
+<app-footer></app-footer>
+<app-chatbot-button></app-chatbot-button>

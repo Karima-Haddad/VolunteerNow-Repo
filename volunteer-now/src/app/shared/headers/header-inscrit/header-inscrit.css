@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* ======================================== HEADER PREMIUM 2025 ======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,165,0,0.12);
+  box-shadow: 0 10px 40px rgba(0,151,167,0.15);
+  z-index: 1000;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header.scrolled {
+  height: 78px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 15px 50px rgba(0,151,167,0.22);
+  border-bottom-color: rgba(255,165,0,0.2);
+}
+
+/* Conteneur principal */
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  height: 68px;
+  width: auto;
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 4px 12px rgba(255,165,0,0.2));
+}
+
+.header.scrolled .logo {
+  height: 58px;
+}
+
+.logo:hover {
+  transform: translateY(-4px) scale(1.04);
+  filter: drop-shadow(0 12px 30px rgba(255,165,0,0.35));
+}
+
+/* Navigation desktop */
+.nav-links {
+  display: none; /* caché sur mobile */
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+  color: #0097A7;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  padding: 0.75rem 0;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.3px;
+  transition: color 0.4s ease;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #FFA500;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover {
+  color: #FFA500;
+}
+
+.nav-item:hover::before {
+  width: 100%;
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  z-index: 1001;
+}
+
+.hamburger:hover {
+  background: rgba(255,165,0,0.15);
+  transform: scale(1.1);
+}
+
+.hamburger .bar {
+  width: 32px;
+  height: 3.5px;
+  background: #0097A7;
+  border-radius: 4px;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg);
+  background: #FFA500;
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.3);
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+  background: #FFA500;
+}
+
+/* Menu mobile – CORRIGÉ & FONCTIONNEL */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255,165,0,0.15);
+  box-shadow: 0 20px 60px rgba(0,151,167,0.25);
+  padding: 2rem 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Quand Angular ajoute *ngIf → le menu devient visible */
+.mobile-menu[style*="display: block"],
+.mobile-menu:not([style*="display: none"]) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-item {
+  display: block;
+  padding: 1.1rem 0;
+  color: #0097A7;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,151,167,0.1);
+  transition: all 0.4s ease;
+}
+
+.mobile-item:last-child {
+  border-bottom: none;
+}
+
+.mobile-item:hover {
+  color: #FFA500;
+  padding-left: 1rem;
+  background: linear-gradient(90deg, rgba(255,165,0,0.08), transparent);
+  transform: translateX(8px);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+  .hamburger {
+    display: none;
+  }
+  .mobile-menu {
+    display: none !important; /* caché sur desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-container { padding: 0 3rem; }
+  .nav-item { font-size: 1.1rem; }
+}
+
+@media (min-width: 1400px) {
+  .header-container { max-width: 1400px; padding: 0 3rem; }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

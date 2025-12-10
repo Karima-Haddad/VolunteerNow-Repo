@@ -1,0 +1,14 @@
+<!-- src/app/shared/components/header/header.component.html -->
+<header>
+    <div class="logo">
+      <img class="logo" src="assets/Logo-horizontale.jpg" alt="Logo">
+    </div>
+    <nav>
+      <a (click)="goToProfile()" style="cursor:pointer;" routerLinkActive="active">Profil</a>
+      <a routerLink="/carte-interactive" routerLinkActive="active">Carte interactive</a>
+      <a routerLink="/events" routerLinkActive="active">Evènements</a>
+    </nav>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+</header>
+
+

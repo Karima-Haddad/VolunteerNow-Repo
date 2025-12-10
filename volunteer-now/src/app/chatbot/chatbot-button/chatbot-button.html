@@ -1,0 +1,47 @@
+﻿<!-- Bouton du chatbot -->
+<button 
+  class="chatbot-btn" 
+  (click)="toggleChat()"
+  title="Ouvrir le chatbot"
+  aria-label="Ouvrir l'assistance par chat"
+>
+  <span class="pulse"></span>
+  <span class="icon">&#129302;</span>
+</button>
+
+<!-- Panneau de discussion -->
+<div class="chat-panel" *ngIf="isChatOpen">
+  
+  <div class="chat-header">
+    <span>VolunteerNow Bot</span>
+    <button class="close-btn" (click)="toggleChat()">✖</button>
+  </div>
+
+  <!-- ICI : AJOUT DU #chatBody OBLIGATOIRE -->
+  <div class="chat-body" #chatBody>
+
+    <!-- Messages -->
+    <div *ngFor="let msg of messages"
+         [ngClass]="msg.sender === 'user' ? 'user-msg' : 'bot-msg'">
+      {{ msg.text }}
+    </div>
+
+    <!-- Typing indicator -->
+    <div *ngIf="isLoading" class="bot-msg typing">
+      🤖 Le bot réfléchit
+    </div>
+
+  </div>
+   
+
+  <div class="chat-footer">
+    <input 
+      type="text" 
+      [(ngModel)]="userInput" 
+      placeholder="Écrire un message..."
+      (keydown.enter)="sendMessage()"
+    />
+
+    <button class="send-btn" (click)="sendMessage()">➤</button>
+  </div>
+</div>

@@ -1,0 +1,342 @@
+/* ============================================= */
+/*  SECTION PHOTO DE PROFIL – Modifier mon profil */
+/*  Thème 🟠 #FFA500  🔵 #0097A7                   */
+/* ============================================= */
+
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding-top: 8px;
+}
+
+/* Photo de profil ronde + effet subtil */
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid white;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 6px rgba(255, 165, 0, 0.3);
+  transition: all 0.4s ease;
+  margin-bottom: 16px;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 8px rgba(255, 165, 0, 0.4);
+}
+
+/* Bouton "Changer la photo" – style VolunteerNow */
+.upload-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 32px;
+  background: #0097A7;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius:  30px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px #0096a726;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.upload-btn:hover {
+  box-shadow: 0 14px 28px #0096a726;
+  background: linear-gradient(180deg, #0097A7, #0096a7b0);
+}
+
+.upload-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Input file caché mais fonctionnel */
+.upload-btn input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  line-height: 1;
+}
+
+
+
+/* Si tu veux une version plus discrète (sans icône) → supprime la règle ::before ci-dessus */
+
+.profile-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px 40px;
+  background: linear-gradient(135deg, #fff8f0 0%, #f0fbfc 100%);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.profile-container > h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 40px 0;
+  color: #FFA500;
+  padding-top: 20px;
+}
+
+
+
+.profile-box {
+  width: 100%;
+  max-width: 560px;
+  background: white;
+  padding: 48px 44px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09);
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Tous les champs centrés dans le formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form label {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.input-field,
+.textarea-field {
+    width: 100%;
+    max-width: 500px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 2px solid #e0e0e0;
+    background-color: #fafafa;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+  outline: none;
+  border-color: #0097A7;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(0, 151, 167, 0.15);
+}
+
+.textarea-field {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Checkbox */
+.checkbox-section {
+    align-self: flex-start;
+    padding-left: 10px;
+    width: 100%;
+    max-width: 420px;
+    margin: 24px 0;
+}
+
+.checkbox-section label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #444;
+}
+
+.checkbox-section input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #FFA500;
+}
+
+/* Champs désactivés */
+.input-field:disabled {
+  background-color: #f5f5f5;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Bouton Enregistrer */
+.save-btn {
+  width: 30%;
+  align-self: flex-e;
+  max-width: 420px;
+  padding: 18px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #FFA500 0%, #FF7A00 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4);
+}
+
+.save-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(255, 165, 0, 0.5);
+}
+
+
+:host ::ng-deep .save-btn:disabled {
+  background: #ccc !important;         
+  background-image: none !important;   
+  cursor: not-allowed !important;
+  box-shadow: none !important;         
+  transform: none !important;          
+}
+.error {
+  align-self: flex-start;
+  color: red;              /* rouge moderne */
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 4px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -10px;
+}
+
+.error::before {
+  content: "⚠️";
+  font-size: 14px;
+}
+.buttons-section {
+  width: 100%;
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center
+}
+
+.cancel-link {
+  display: block;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #0097A7;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-right: 10px;
+}
+
+.cancel-link:hover {
+  color: #FFA500;
+  text-decoration: underline;
+}
+
+.password-wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: space-around;
+  justify-content: center;
+}
+
+.password-wrapper .toggle-eye {
+  line-height: 3;
+  position: absolute;
+  right: 12px;
+  padding-right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  opacity: 1;
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-container > h2 {
+    font-size: 2.2rem;
+  }
+  .profile-box {
+    padding: 40px 28px;
+  }
+  .input-field,
+  .textarea-field,
+  .save-btn,
+  form label,
+  .checkbox-section {
+    max-width: 100%;
+  }
+}
+
+
+
+
+.vn-swal-popup {
+  border-radius: 16px !important;
+}
+
+.vn-swal-title {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.vn-swal-text {
+  color: #34495e;
+  font-size: 1.1rem;
+}
+
+.vn-swal-confirm-btn {
+  background-color: #FFA500 !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 10px 24px !important;
+  border-radius: 30px !important;
+  transition: all 0.3s ease;
+}
+
+.vn-swal-confirm-btn:hover {
+  background-color: #e69500 !important;
+  transform: translateY(-2px);
+}
+
+.vn-swal-cancel-btn {
+  background-color: #0097A7 !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 10px 24px !important;
+  border-radius: 30px !important;
+  transition: all 0.3s ease;
+}
+
+.vn-swal-cancel-btn:hover {
+  background-color: #008291 !important;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,117 @@
+<app-header-commun></app-header-commun>
+
+
+<main class="main-content">
+
+<!-- HERO PROFIL -->
+<section class="hero">
+  <div class="avatar">
+    <img *ngIf="photoUrl()" 
+         [src]="photoUrl()!" 
+         alt="Photo de profil" />
+  </div>
+  <div class="hero-info">
+    <h1>{{ userName() }}</h1>
+    <p class="join-text">{{ bio() || "Heureux(se) de contribuer à des actions solidaires avec VolunteerNow." }}</p>
+
+    <div class="tags">
+      @for (interest of interests(); track interest) {
+        <span class="tag" 
+              [ngClass]="{
+            'tag-ecology': interest === 'Écologie & Environnement',
+            'tag-solidarity': interest === 'Solidarité & Aide sociale',
+            'tag-education': interest === 'Éducation & Jeunesse',
+            'tag-health': interest === 'Santé & Bien-être',
+            'tag-culture': interest === 'Culture & Patrimoine',
+            'tag-sport': interest === 'Sport & Animation'
+          }">
+          {{ interest }}
+        </span>
+      }
+    </div>
+
+    <button class="edit-profile-btn" routerLink="/Modifier-profil">
+      ✏️ Modifier le profil
+    </button>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat-card">
+    <div class="stat-icon">🏆</div>
+    <div class="stat-value">{{ eventsCount() }}</div>
+    <div class="stat-label">Événements</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">🌟</div>
+    <div class="stat-value">{{ rating() }}</div>
+    <div class="stat-label">Note moyenne</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">🎖️</div>
+    <div class="stat-value">{{ badgesCount() }}</div>
+    <div class="stat-label">Badges gagnés</div>
+  </div>
+</section>
+
+<!-- BADGES -->
+<section class="badges">
+  <h2>🧡 Mes Badges</h2>
+  <div class="badges-grid">
+    @for (badge of badges(); track badge.name) {
+      <div class="badge-item" [class.locked]="!badge.unlocked">
+        <div class="badge-circle" [class.locked-circle]="!badge.unlocked">
+          {{ badge.icon }}
+        </div>
+        <p>{{ badge.name }}</p>
+      </div>
+    }
+
+    @if (badges().length === 0) {
+      <p class="empty">Aucun badge pour le moment.</p>
+    }
+
+  </div>
+</section>
+
+<!-- ÉVÉNEMENTS -->
+<section class="events">
+  <h2>🗓️ Derniers événements</h2>
+  <div class="events-list">
+    @for (event of recentEvents(); track event.title) {
+      <div class="event-item" [class.upcoming]="event.status === 'Ouvert'">
+        <div class="event-info">
+          <span class="event-icon {{ event.category }}"></span>
+          <div>
+            <p class="event-title">{{ event.title }}</p>
+            <p class="event-meta">{{ event.date }} • {{ event.location }}</p>
+          </div>
+        </div>
+        <span class="event-status"
+            [ngClass]="{
+              'status-completed': event.status === 'Terminé',
+              'status-upcoming': event.status === 'Ouvert',
+              'status-closed': event.status === 'Fermé'
+            }">
+        {{ event.status }}
+      </span>
+      </div>
+    }
+
+    @if (recentEvents().length === 0) {
+      <p class="empty">Aucun événement récent.</p>
+    }
+
+    
+  </div>
+ <a [routerLink]="['/user', currentUser?.id]" class="history-link">
+  Voir tout l’historique →
+</a>
+</section>
+
+</main> 
+
+<app-chatbot-button></app-chatbot-button>
+<app-footer></app-footer>

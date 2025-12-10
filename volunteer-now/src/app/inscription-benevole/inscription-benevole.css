@@ -1,0 +1,407 @@
+/* ================================
+   FORMULAIRE INSCRIPTION BÉNÉVOLE
+   Couleurs codées sans variables
+================================ */
+
+/* CONTAINER PRINCIPAL */
+.main-container {
+  min-height: 100vh;
+  padding: 1rem !important;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+      to bottom right,
+      rgba(0,151,167,0.05),
+      rgba(255,165,0,0.05)
+  );
+}
+
+/* WRAPPER */
+.form-wrapper {
+  margin: 100px auto 60px;
+  width: 100%;
+  max-width: 850px;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* SECTION HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  color: #0097A7;
+  line-height: 1.2;
+}
+
+.hero h1 .orange {
+  color: #FFA500;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: #555;
+  max-width: 620px;
+  margin: 1rem auto 0;
+  font-weight: 500;
+}
+
+/* FORM */
+.form {
+  background: #ffffff;
+  padding: 1rem !important;
+  border-radius: 1.8rem;
+  box-shadow: 0 18px 40px rgba(0, 87, 168, 0.16);
+  border: 1px solid rgba(0,0,0,0.05);
+  backdrop-filter: blur(4px);
+}
+
+
+/* Aligner tout le contenu interne */
+.section,
+.field,
+.checkbox-grid,
+.actions,
+.success-box,
+.error {
+  padding-left: 1rem !important;
+  padding-right: 2rem !important;
+}
+
+/* SECTIONS */
+.section {
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 0.5px;
+  color: #0097A7;
+  margin-bottom: 1.5rem;
+}
+
+/* CHAMPS */
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: .45rem;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.field label .required {
+  color: #FFA500;
+  margin-left: 3px;
+}
+
+.field input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 1rem;
+  font-size: 1rem;
+  transition: .3s ease;
+  background: #fafafa;
+}
+
+.field input:hover {
+  border-color: #0097A7;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #FFA500;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255,165,0,.3);
+  transform: translateY(-2px);
+}
+
+.hint {
+  font-size: .85rem;
+  color: #777;
+  margin-top: .3rem;
+  font-style: italic;
+}
+
+/* CHECKBOX GRID */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  background: #fafafa;
+  border: 2px solid #ddd;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.checkbox-label:hover {
+  border-color: #FFA500;
+  background: rgba(255,165,0,0.07);
+  transform: translateY(-2px);
+}
+
+.checkbox-label input {
+  width: 22px;
+  height: 22px;
+  accent-color: #FFA500;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.link { 
+  color: #0097A7; 
+  font-weight: 500; 
+  cursor: pointer;
+}
+.link:hover { 
+  color: #FFA500; 
+}
+
+/* BOUTON PRINCIPAL */
+.btn-submit {
+  background: linear-gradient(135deg, #FFA500, #0097A7);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 1rem 2.7rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: .35s;
+  box-shadow: 0 12px 28px rgba(0,87,168,.3);
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(0,87,168,.45);
+}
+
+/* MESSAGES LÉGAUX */
+.legal {
+  text-align: center;
+  font-size: .85rem;
+  color: #777;
+  margin-top: 1.7rem;
+}
+
+.underline {
+  text-decoration: underline;
+  color: #0097A7;
+  transition: .2s;
+}
+
+.underline:hover {
+  color: #FFA500;
+}
+
+/* ERREUR */
+.error {
+  color: #E63946;
+  font-size: .85rem;
+  margin-top: .3rem;
+  font-weight: 600;
+}
+
+/* SUCCESS BOX */
+.success-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(46,139,87,.12);
+  border: 1px solid #2E8B57;
+  border-radius: 1rem;
+  text-align: center;
+  color: #2E8B57;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* CHATBOT FLOATING BUTTON */
+.chatbot-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 62px;
+  height: 62px;
+  background: linear-gradient(135deg, #FFA500, #0097A7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.9rem;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(0,87,168,.32);
+  transition: .3s ease;
+  z-index: 1000;
+}
+
+.chatbot-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 14px 32px rgba(0,87,168,.45);
+}
+
+.chatbot-btn .pulse {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: 50%;
+  opacity: .5;
+  animation: pulse 2s infinite;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: .5; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===================================
+   CHAMP PHOTO DE PROFIL – STYLE MODERNE
+=================================== */
+
+  .photo-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .photo-preview {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-image: url('/assets/img/default-avatar.svg');
+  }
+
+  .photo-preview:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(255, 165, 0, 0.25);
+  }
+
+  .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    font-size: 2rem;
+  }
+
+  .photo-preview:hover .photo-overlay {
+    opacity: 1;
+  }
+
+  .upload-btn {
+    background: linear-gradient(135deg, #FFA500, #ff8c00);
+    color: white;
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .upload-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(255, 165, 0, 0.4);
+    background: linear-gradient(135deg, #ff8c00, #e67e00);
+  }
+
+  .hidden-input {
+    display: none;
+  }
+
+  .optional {
+    color: #888;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+
+  .success-hint {
+    color: #2E8B57;
+    font-weight: 600;
+  }
+
+  .file-name {
+    color: #0097A7;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }

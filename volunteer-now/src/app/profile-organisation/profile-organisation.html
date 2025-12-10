@@ -1,0 +1,158 @@
+<app-header-commun></app-header-commun>
+
+
+   <!-- 🔔 SIDEBAR NOTIFICATIONS À DROITE -->
+<div class="notif-sidebar" *ngIf="notifOpen">
+
+  <div class="notif-header">
+    <h2>🔔 Notifications</h2>
+    <button class="close-btn" (click)="notifOpen = false">✖</button>
+  </div>
+
+  <div class="notif-content">
+
+    @for (n of notificationsNonLues; track n._id) {
+      <div class="notif-card">
+
+        <p class="notif-title">
+  🧑‍🤝‍🧑 
+          <strong
+            class="nom-benevole"
+            [routerLink]="['/Profil-benevole', n.donnees.benevole_id._id]"
+          >
+            {{ n.donnees.benevole_nom }}
+          </strong>  
+          souhaite participer à  
+          <strong>"{{ n.donnees.evenement_titre }}"</strong>
+      </p>
+
+        <div class="notif-actions">
+          <button class="btn-accept" (click)="onAccepter(n)" >
+            ✔ Accepter
+          </button>
+
+          <button class="btn-refuse"  (click)="onRefuser(n)">
+            ✖ Refuser
+          </button>
+        </div>
+
+      </div>
+    }
+
+    @if (notificationsNonLues.length === 0) {
+      <p class="empty">Aucune nouvelle candidature.</p>
+    }
+
+  </div>
+  
+</div>
+
+
+<main class="main-content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <img *ngIf="photoUrl(); else noPhoto"
+         [src]="photoUrl()!"
+         alt="Photo organisation" />
+
+    <ng-template #noPhoto>
+      {{ orgInitial() }}
+    </ng-template>
+    </div>
+
+    <div class="hero-right">
+      <h1 class="org-name">{{ orgName() }}</h1>
+      <p class="org-bio">{{ description() }}</p>
+
+      <div class="tags">
+       @for (s of organisation().secteurs; track s) {
+        <span class="tag">{{ s }}</span>
+      }
+      </div>
+
+      <div class="actions">
+        <button routerLink="/ajout-eventement" class="btn-action">
+          🗓️ Ajouter événement
+        </button>
+
+        <button routerLink="/Modifier-profil" class="btn-action ">
+          ✏️ Modifier profil
+        </button>
+      </div>
+    </div>
+
+      
+  </section>
+
+
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-card">
+      <div class="stat-icon">📍</div>
+      <div class="stat-number">{{ ville() }}</div>
+      <div class="stat-label">Localisation</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-number">{{ rating() }}</div>
+      <div class="stat-label">Note moyenne</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-number">{{ eventsCount() }}</div>
+      <div class="stat-label">Événements</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📧</div>
+      <div class="stat-label">Contact</div>
+      <div class="stat-number email">{{ phone() }}</div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="section about">
+    <h2 class="section-title">📖 À propos</h2>
+    <p>
+    {{ description() || "Aucune description fournie pour le moment." }}
+    </p>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section">
+    <h2 class="section-title">📅 Mes événements</h2>
+
+    <div class="events">
+      @for (e of recentEvents(); track e.title) {
+        <div class="event-card">
+          
+          <div>
+            <h3 class="event-title">{{ e.title }}</h3>
+            <p class="event-info">{{ e.date }} • {{ e.location }}</p>
+          </div>
+        </div>
+      }
+
+      @if (recentEvents().length === 0) {
+        <p class="empty">Aucun événement enregistré.</p>
+      }
+    </div>
+    
+   <a [routerLink]="['/user', currentUser?.id]" class="history-link">
+  Voir tout l’historique →
+</a>
+
+  </section>
+
+</main>
+
+<app-chatbot-button></app-chatbot-button>
+
+<div class="notif-icon-fixed" (click)="toggleNotifications()">🔔</div>
+
+<app-footer></app-footer>

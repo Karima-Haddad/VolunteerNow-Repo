@@ -1,0 +1,142 @@
+<app-header-inscrit></app-header-inscrit>
+
+<main class="main">
+  <div class="container">
+
+    <div class="hero">
+      <h1>Inscrivez votre <span class="highlight">organisation</span></h1>
+      <p>Publiez vos événements, recrutez des bénévoles et amplifiez votre impact local.</p>
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form">
+
+      <!-- INFO ORG -->
+      <section class="section">
+        <h2>🏢 Informations de l'organisation</h2>
+
+        <div class="field">
+          <label>Nom de l’organisation <span class="required">*</span></label>
+          <input type="text" name="name" ngModel required placeholder="ex: Secours Populaire Marseille">
+        </div>
+
+        <div class="field">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" name="email" ngModel required placeholder="NomOrganisation@gmail.com">
+        </div>
+
+        <div class="field">
+          <label>Mot de passe <span class="required">*</span></label>
+          <input type="password" name="password" ngModel required minlength="8" placeholder="8 caractères min">
+        </div>
+
+        <div class="field">
+          <label>Bio <span class="required">*</span></label>
+          <input type="text" name="bio" ngModel required placeholder="Exprimez vous">
+        </div>
+
+        <div class="field">
+          <label>Description courte <span class="required">*</span></label>
+          <textarea name="description" ngModel required rows="4" placeholder="Présentez votre mission..." class="textarea"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Email de contact <span class="required">*</span></label>
+          <input type="email" name="email_contact" ngModel required placeholder="contact@votreorg.org">
+        </div>
+
+        <!-- Domaine -->
+        <div class="field">
+          <label>Domaine principal d’activité <span class="required">*</span></label>
+          <div class="radio-grid">
+            <label class="radio-label">
+              <input type="radio" name="domaine" value="ecologie" ngModel required>
+              <span>🌱 Environnement & Nature</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="domaine" value="solidarite" ngModel>
+              <span>❤️ Santé & Bien-être</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="domaine" value="education" ngModel>
+              <span>🎒 Éducation & Formation</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="domaine" value="sante" ngModel>
+              <span>🐾 Animaux & Protection animale</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="domaine" value="culture" ngModel>
+              <span>🍎 Distribution alimentaire</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="domaine" value="autre" ngModel>
+              <span>Autre</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Téléphone -->
+        <div class="field">
+          <label>Téléphone <span class="required">*</span></label>
+          <input type="text" name="phone" ngModel required placeholder="ex: 06 12 34 56 78">
+        </div>
+
+        <!-- Photo -->
+        <div class="field">
+          <label>Photo de profil <span class="optional">(optionnel)</span></label>
+          <div class="photo-upload-wrapper">
+            <div class="photo-preview" [style.background-image]="'url(' + (photoPreview || '/assets/img/default-avatar.jpg') + ')'">
+              <div class="photo-overlay"><span class="icon">📷</span></div>
+            </div>
+
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" id="photoUpload" class="hidden-input">
+            <label for="photoUpload" class="upload-btn"><span class="icon">➕</span> Choisir une photo</label>
+
+            <p class="hint" *ngIf="!photoPreview">JPG, PNG ou GIF • max 5 Mo</p>
+            <p class="hint success-hint" *ngIf="photoPreview"><span class="icon">✓</span> Photo prête !</p>
+          </div>
+
+          <small *ngIf="selectedFileName" class="file-name">{{ selectedFileName }}</small>
+        </div>
+
+      </section>
+
+      <!-- Contact & Localisation -->
+      <section class="section">
+        <h2>📍 Contact & Localisation</h2>
+        <div class="grid">
+          <div class="field">
+            <label>Email de contact <span class="required">*</span></label>
+            <input type="email" name="email_contact" ngModel required placeholder="contact@votreorg.org">
+          </div>
+          <div class="field">
+            <label>Ville principale d’activité <span class="required">*</span></label>
+            <input type="text" name="ville" ngModel required placeholder="Marseille">
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <span routerLink="/" class="link">← Déjà inscrit ? Se connecter</span>
+        <button type="submit" class="btn-submit" [disabled]="form.invalid || loading">Créer mon compte organisation 🚀</button>
+      </div>
+
+      <p class="legal">
+        En vous inscrivant, vous acceptez nos
+        <span class="underline">Conditions d’utilisation</span>
+        et notre
+        <span class="underline">Politique de confidentialité</span>.
+      </p>
+
+      <input type="hidden" name="role" value="organisation">
+    </form>
+
+    <div *ngIf="submitted" class="success">
+      <p>Inscription réussie ! Votre organisation est prête.</p>
+    </div>
+
+  </div>
+</main>
+
+<app-chatbot-button></app-chatbot-button>
+<app-footer></app-footer>

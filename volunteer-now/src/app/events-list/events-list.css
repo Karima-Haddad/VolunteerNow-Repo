@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: linear-gradient(to right, #FFA500, #0097A7);
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: slideDown 1s ease-out forwards;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  animation: fadeIn 1.4s ease-out forwards;
+}
+
+.search-bar input {
+  width: 60%;
+  max-width: 600px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  animation: fadeIn 1.6s ease-out forwards;
+}
+
+/* ===== LISTE DES ÉVÉNEMENTS ===== */
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 50px;
+  justify-items: center;
+  background: #f9f9f9;
+  min-height: 70vh;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.no-events,
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #666;
+  padding: 60px 20px;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.loading {
+  color: #0097A7;
+  font-weight: 600;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.pagination button {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 12px;
+  background: #F5F5F5;
+  color: #1A1A1A;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #FFA500;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.pagination button.active {
+  background: #0097A7;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 151, 167, 0.3);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===================================================== */
+/* ================== ANIMATIONS ======================= */
+/* ===================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Effet pulse pour le loading */
+@keyframes pulse {
+  0% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.4; transform: scale(1); }
+}

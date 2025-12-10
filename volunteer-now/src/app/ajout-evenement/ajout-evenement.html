@@ -1,0 +1,155 @@
+<app-header-commun></app-header-commun>
+
+<main class="main-container">
+
+  <div class="card-hover">
+
+    <!-- Titre principal -->
+    <div class="text-center mb-10">
+      <h2 class="title-gradient">
+        Créer un événement solidaire
+      </h2>
+      <p class="subtitle">
+        Donnez vie à votre initiative et inspirez d’autres bénévoles 💙🧡
+      </p>
+    </div>
+
+    <!-- FORMULAIRE COMPLET -->
+    <form (ngSubmit)="onSubmit()" #eventForm="ngForm" class="form-grid">
+
+      <!-- 🟠 TITRE -->
+      <div class="group">
+        <label class="label-icon">
+          <span class="icon-orange">✏️</span>
+          <span>Titre <span class="text-red-500">*</span></span>
+        </label>
+        <input type="text" name="titre" [(ngModel)]="form().titre"
+               required placeholder="Ex : Nettoyage de plage"
+               class="input-field">
+      </div>
+
+      <!-- 🟦 DESCRIPTION -->
+      <div class="group">
+        <label class="label-icon">
+          <span class="icon-orange">📄</span>
+          <span>Description <span class="text-red-500">*</span></span>
+        </label>
+        <textarea rows="5" name="description" [(ngModel)]="form().description"
+                  required placeholder="Décrivez clairement la mission, les objectifs..."
+                  class="input-field resize-none"></textarea>
+      </div>
+
+      <!-- 🟣 DATE -->
+      <div class="group">
+        <label class="label-icon">
+          <span class="icon-orange">📅</span>
+          <span>Date et heure <span class="text-red-500">*</span></span>
+        </label>
+        <input type="datetime-local" name="date_event" [(ngModel)]="form().date_event"
+               required class="input-field">
+      </div>
+
+      <!-- 🟢 PLACES -->
+      <div class="group">
+        <label class="label-icon">
+          <span class="icon-orange">👥</span>
+          <span>Nombre de places <span class="text-red-500">*</span></span>
+        </label>
+        <input type="number" name="nb_places" [(ngModel)]="form().nb_places"
+               required min="1" placeholder="20" class="input-field">
+      </div>
+
+      <!-- 🟡 CATÉGORIE -->
+      <div class="group">
+        <label class="label-icon">
+          <span class="icon-orange">🏷️</span>
+          <span>Catégorie <span class="text-red-500">*</span></span>
+        </label>
+        <select name="categorie" [(ngModel)]="form().categorie" required class="input-field">
+          <option value="">Choisir une catégorie</option>
+          <option value="environnement">🌱 Environnement & Nature</option>
+          <option value="social">🤝 Aide Sociale & Humanitaire</option>
+          <option value="sante">❤️ Santé & Bien-être</option>
+          <option value="animaux">🐾 Animaux & Protection animale</option>
+          <option value="alimentaire">🍎 Distribution alimentaire</option>
+          <option value="education">🎒 Éducation & Formation</option>
+        </select>
+      </div>
+
+
+      <!-- 🟦 LOCALISATION + CARTE -->
+      <div class="location-card">
+
+        <div class="flex items-center space-x-2 mb-4">
+          <h3 class="text-lg font-semibold text-blue-dark">
+            📍 Localisation de l'événement <span class="text-red-500">*</span>
+          </h3>
+        </div>
+
+        <!-- Adresse -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="mb-5">
+            <label class="input-label">Ville</label>
+            <input type="text" name="ville" [(ngModel)]="form().ville"
+                   required placeholder="Tunis / Paris" class="input-sm">
+          </div>
+          <div>
+            <label class="input-label">Rue / Adresse</label>
+            <input type="text" name="localisation" [(ngModel)]="form().localisation"
+                   required placeholder="Avenue Habib Bourguiba..." class="input-sm">
+          </div>
+        </div>
+
+        <!-- Carte -->
+        <div class="mt-6">
+          <label class="input-label">Sélectionnez l’emplacement</label>
+          <p class="text-gray-600 text-sm mb-2">
+            Cliquez sur la carte pour enregistrer latitude & longitude.
+          </p>
+
+          <div id="map" style="height: 350px; border-radius: 12px; overflow: hidden;"></div>
+        </div>
+
+        <!-- Latitude / Longitude -->
+        <input type="hidden" name="latitude" [(ngModel)]="form().latitude">
+        <input type="hidden" name="longitude" [(ngModel)]="form().longitude">
+
+        <p class="text-xs text-gray-500 mt-2">
+          📌 Coordonnées : {{ form().latitude }} , {{ form().longitude }}
+        </p>
+
+      </div>
+
+      <!-- BOUTONS -->
+      <div class="btn-row">
+      <button type="button" class="btn-cancel"  routerLink="/events">
+        Annuler
+      </button>
+
+      <button type="submit" class="btn-submit" [disabled]="!eventForm.form.valid">
+        ⚡ Publier l'événement
+      </button>
+    </div>
+
+
+    </form>
+  </div>
+
+  <!-- Astuces -->
+  <div class="tips-grid">
+    <div class="tip-card tip-orange">
+      <p class="text-3xl">⚡</p>
+      <p class="font-semibold text-orange">Énergie & Action</p>
+      <p class="text-sm text-gray-600">Vos événements comptent</p>
+    </div>
+    <div class="tip-card tip-blue">
+      <p class="text-3xl">🔵</p>
+      <p class="font-semibold text-blue">Fiabilité & Confiance</p>
+      <p class="text-sm text-gray-600">Données sécurisées</p>
+    </div>
+  </div>
+
+</main>
+
+<app-chatbot-button></app-chatbot-button>
+<app-footer></app-footer>

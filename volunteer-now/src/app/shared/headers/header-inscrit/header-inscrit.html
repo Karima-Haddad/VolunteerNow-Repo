@@ -1,0 +1,33 @@
+
+<header class="header">
+  <div class="header-container">
+    
+    <!-- Logo à gauche -->
+    <img class="logo" src="assets/Logo-horizontale.jpg" alt="Logo">
+
+    
+    <!-- Navigation à droite (desktop) -->
+    <nav class="nav-links">
+      <a routerLink="/a-propos" class="nav-item">
+        <span class="nav-label">À propos</span>
+      </a>
+      <a routerLink="/" class="nav-item">Connexion</a>
+    </nav>
+
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+  </div>
+
+  <!-- Menu mobile (ouvert) -->
+  <div class="mobile-menu" *ngIf="isMenuOpen">
+    <a href="/about" class="mobile-item" (click)="closeMenu()">
+      À propos
+    </a>
+    <a href="/login" class="mobile-item" (click)="closeMenu()">Connexion</a>
+  </div>
+</header>

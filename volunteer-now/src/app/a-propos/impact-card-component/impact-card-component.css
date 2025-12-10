@@ -1,0 +1,42 @@
+
+.icon{
+    font-size: 50px;
+    padding-top:40px;
+}
+
+h1{
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+}
+
+.card{
+    height: 200px;
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.958), rgba(2, 181, 201, 0.733));
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+    text-align: center;
+    padding-bottom: 10px;
+    transition: all 0.3s ease-in-out; 
+    line-height: 30px;
+}
+
+.card:hover{
+   transform: translateY(-8px);
+    box-shadow: 10px 10px 25px #0096a75d; 
+}
+
+
+.value {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.card p {
+    font-size: 18px;
+    color: white;
+}
+
+/*align content -> wrap s effectue sur le contenu au total
+align item pas nesecessaire  pas space*/

@@ -1,0 +1,170 @@
+<app-header-inscrit></app-header-inscrit>
+<main class="main-container">
+  <div class="form-wrapper">
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Devenez <span class="orange">bénévole</span> en quelques clics</h1>
+      <p>Remplissez ce formulaire unique pour rejoindre la communauté et commencer à agir près de chez vous.</p>
+    </div>
+
+    <!-- FORMULAIRE -->
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form">
+
+      <!-- IDENTITÉ -->
+      <section class="section">
+        <h2><span class="icon">👤</span> Identité</h2>
+
+        <!-- NOM -->
+        <div class="field">
+          <label>Nom complet <span class="required">*</span></label>
+          <input type="text" name="nom" ngModel required #nom="ngModel" placeholder="Jean Dupont">
+          <div *ngIf="nom.invalid && nom.touched" class="error">Le nom est obligatoire.</div>
+        </div>
+
+        <!-- TÉLÉPHONE -->
+        <div class="field">
+          <label>Téléphone <span class="required">*</span></label>
+          <input type="tel" name="phone" ngModel required #phone="ngModel" placeholder="+216 27 000 000">
+          <div *ngIf="phone.invalid && phone.touched" class="error">Le téléphone est obligatoire.</div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="field">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" name="email" ngModel required email #email="ngModel" placeholder="jean@email.com">
+          <div *ngIf="email.invalid && email.touched" class="error">Email invalide.</div>
+        </div>
+
+        <!-- MOT DE PASSE -->
+        <div class="field">
+          <label>Mot de passe <span class="required">*</span></label>
+          <input type="password" name="password" ngModel required minlength="8" #pwd="ngModel" placeholder="8 caractères min">
+          <p class="hint">Majuscule, chiffre et symbole recommandés.</p>
+          <div *ngIf="pwd.invalid && pwd.touched" class="error">Minimum 8 caractères.</div>
+        </div>
+
+        <!-- Bio -->
+        <div class="field">
+          <label>Bio </label>
+          <input type="text" name="bio" ngModel placeholder="Exprimez-vous">
+        </div>
+
+        <!-- PHOTO DE PROFIL -->
+        <div class="field">
+          <label>Photo de profil <span class="optional">(optionnel)</span></label>
+          <div class="photo-upload-wrapper">
+            <!-- Aperçu de l'image -->
+            <div class="photo-preview" [style.background-image]="'url(' + (photoPreview || '/uploads/users/default-avatar.jpg') + ')'">
+              <div class="photo-overlay">
+                <span class="icon">📷</span>
+              </div>
+            </div>
+
+            <!-- Input file caché -->
+            <input 
+              type="file" 
+              #fileInput 
+              (change)="onFileSelected($event)" 
+              accept="image/*" 
+              id="photoUpload" 
+              class="hidden-input">
+
+            <!-- Bouton stylisé -->
+            <label for="photoUpload" class="upload-btn">
+              <span class="icon">➕</span> Choisir une photo
+            </label>
+
+            <p class="hint" *ngIf="!photoPreview">
+              JPG, PNG ou GIF • max 5 Mo
+            </p>
+            <p class="hint success-hint" *ngIf="photoPreview">
+              <span class="icon">✓</span> Photo prête !
+            </p>
+          </div>
+
+          <!-- Nom du fichier sélectionné -->
+          <small *ngIf="selectedFileName" class="file-name">{{ selectedFileName }}</small>
+        </div>
+
+        <!-- VILLE -->
+        <div class="field">
+          <label>Ville <span class="required">*</span></label>
+          <input type="text" name="localisation" ngModel required #loc="ngModel" placeholder="Paris, Lyon...">
+          <p class="hint">Pour les événements près de chez vous.</p>
+          <div *ngIf="loc.invalid && loc.touched" class="error">La ville est obligatoire.</div>
+        </div>
+      </section>
+
+      <!-- CENTRES D’INTÉRÊT -->
+      <section class="section">
+        <h2><span class="icon">🎯</span> Centres d’intérêt</h2>
+        <p class="hint">Sélectionnez au moins 2 domaines qui vous passionnent :</p>
+
+        <div class="checkbox-grid">
+          <label class="checkbox-label">
+            <span class="icon">🌱</span>
+            <input type="checkbox" name="ecologie" ngModel> Environnement & Nature
+          </label>
+
+          <label class="checkbox-label">
+            <span class="icon">❤️</span>
+            <input type="checkbox" name="solidarite" ngModel> Santé & Bien-être
+          </label>
+
+          <label class="checkbox-label">
+            <span class="icon">🤝</span>
+            <input type="checkbox" name="education" ngModel> Aide Sociale & Humanitaire
+          </label>
+
+          <label class="checkbox-label">
+            <span class="icon">🐾</span>
+            <input type="checkbox" name="sante" ngModel> Animaux & Protection animale
+          </label>
+
+          <label class="checkbox-label">
+            <span class="icon">🍎</span>
+            <input type="checkbox" name="culture" ngModel> Distribution alimentaire
+          </label>
+
+          <label class="checkbox-label">
+            <span class="icon">🎒</span>
+            <input type="checkbox" name="sport" ngModel> Éducation & Formation
+          </label>
+        </div>
+
+        <div *ngIf="form.submitted && countInterets(form) < 2" class="error">
+          Sélectionnez au moins 2 centres d’intérêt.
+        </div>
+      </section>
+
+      <!-- BOUTONS -->
+      <div class="actions">
+        <a routerLink="/" class="link-text">Déjà inscrit ? Se connecter</a>
+        <button 
+          type="submit" 
+          class="btn-submit"
+          [disabled]="!isFormValid(form)"
+        >
+          Créer mon compte bénévole 🚀
+        </button>
+      </div>
+
+      <p class="legal">
+        En vous inscrivant, vous acceptez nos
+        <span class="underline">Conditions d’utilisation</span>
+        et notre
+        <span class="underline">Politique de confidentialité</span>.
+      </p>
+    </form>
+
+    <!-- SUCCÈS -->
+    <div *ngIf="submitted" class="success-box">
+      <p>Inscription réussie ! Bienvenue.</p>
+    </div>
+
+  </div>
+</main>
+
+<app-chatbot-button></app-chatbot-button>
+<app-footer></app-footer>

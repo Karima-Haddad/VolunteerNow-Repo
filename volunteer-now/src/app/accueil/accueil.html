@@ -1,0 +1,152 @@
+
+<!-- =========================== header ===========================-->
+
+<app-header-accueil class="header"></app-header-accueil>
+
+<!-- =========================== body ===========================-->
+<div class="container">
+
+    <!-- Introduction -->
+    <div class="introduction">
+        <h1>Rejoignez la communauté des bénévoles qui changent le monde 🌍</h1>
+        <p><span>VolunteerNow</span> connecte les volontaires aux associations selon leurs passions et disponibilités.</p>
+    </div>
+
+    <!-- formulaire de connexion -->
+    <div class="Connexion">
+        <h2>Connexion</h2>
+        <form class="authentification" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    
+            <!-- Champ Email -->
+            <div>
+                <label for="mail" class="label">Email</label>
+                <input id="mail"
+                      class="inputChamp"
+                      placeholder="votremail@gmail.com"
+                      required
+                      email
+                      [(ngModel)]="email"
+                      name="email"
+                      #emailRef="ngModel">
+
+                <!-- Message d'erreur email -->
+                <p *ngIf="emailRef.invalid && emailRef.touched" style="color:red; font-size:13px;">
+                    ⚠️ Email invalide
+                </p>
+            </div>
+
+            <!-- Champ Mot de passe -->
+            <div class="password-wrapper">
+                <label for="password" class="label">Mot de passe</label>
+
+                <div class="password-container">
+                    <input id="password"
+                          [type]="showPassword ? 'text' : 'password'"
+                          class="inputChamp"
+                          placeholder="•••••••••••"
+                          required
+                          minlength="3"
+                          [(ngModel)]="password"
+                          name="password"
+                          #passwordRef="ngModel">
+
+                    <!-- Icônes cadenas -->
+                    <span class="toggle-icon" (click)="togglePassword()">
+                        <span *ngIf="!showPassword">🔒</span>
+                        <span *ngIf="showPassword">🔓</span>
+                    </span>
+                </div>    
+
+                <!-- Message d'erreur mot de passe -->
+                <p *ngIf="passwordRef.invalid && passwordRef.touched" style="color:red; font-size:13px;">
+                    ⚠️ Le mot de passe est requis
+                </p>
+            </div>
+
+
+            <div class="Cnx">
+                <a href="/Mot-de-passe-oublié" class="link" target="_blank">Mot de passe oublié ?</a>
+            </div>
+
+            <div class="center">
+                <button class="cnxButton"
+                        type="submit"
+                        [disabled]="loginForm.invalid">
+                    Se connecter
+                </button>
+            </div>
+
+            <button class="google-btn" type="button" (click)="loginWithGoogle()">
+              <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+              <span>Se connecter avec Google</span>
+            </button>
+
+            <div class="center">
+                <p class="label">Pas encore de compte ? <a href="/inscription-benevole" class="link" id="inscrit">S’inscrire</a></p>
+            </div> 
+        </form>
+
+        <!-- Message général du backend -->
+        <div class="error-container" *ngIf="errorMessage">
+            <p class="error-message">
+                {{ errorMessage }}
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!-- =========================== Section valeurs ===========================-->
+<section class="Section">
+    
+    <!-- Cadre 1 -->
+    <div class="box">
+      <div class="icon-gradient icon">
+        <span>🤝</span>
+      </div>
+      <h3>Engagement</h3>
+      <p>
+        Écoutez et reliez tout ce que vous voulez selon vos envies.
+      </p>
+    </div>
+    
+    <!-- Cadre 2 -->
+    <div class="box">
+      <div class="icon-orange icon">
+        <span>🛡️</span>
+      </div>
+      <h3>Confiance</h3>
+      <p>
+        Connectez-vous et trouvez tout ce qui est à la portée de vos clics.
+      </p>
+    </div>
+    
+    <!-- Cadre 3 -->
+    <div class="box">
+      <div class="icon-bleu icon">
+        <span>🚀</span>
+      </div>
+      <h3>Action</h3>
+      <p>
+        Gagnez des badges, partagez et partagez vos envies.
+      </p>
+    </div>
+    
+    <!-- Cadre 4 -->
+    <div class="box">
+      <div class="icon-gradient icon">
+        <span>🌟</span>
+      </div>
+      <h3>Énergie</h3>
+      <p>
+        Déplacez-vous dans une communauté solidaire de bénévoles.
+      </p>
+    </div>
+
+</section>
+
+<!-- =========================== footer ===========================-->
+<app-footer></app-footer>
+
+<!-- =========================== Bouton ChatBot =========================== -->
+ <app-chatbot-button></app-chatbot-button>

@@ -1,0 +1,9 @@
+<section class="sectionStat" *ngIf="stats && stats.length">
+  <div *ngFor="let item of stats">
+    <app-impact-card-component
+      [icon]="item.icon"
+      [value]="item.value"
+      [label]="item.label">
+    </app-impact-card-component>
+  </div>
+</section>

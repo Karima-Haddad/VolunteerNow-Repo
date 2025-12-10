@@ -1,0 +1,214 @@
+/* ==== POLICES (Google Fonts) ==== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* ==== RESET & ACCESSIBILITÉ ==== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== HEADER PRINCIPAL ==== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3.125rem; /* 16px → 1rem, 50px → 3.125rem */
+  background: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(0, 87, 168, 0.18);
+  border-bottom: none;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+/* Effet au scroll */
+header.scrolled {
+  padding: 0.75rem 3.125rem;
+  border-bottom-width: 0;
+  box-shadow: 0 8px 20px rgba(0, 87, 168, 0.18);
+  background: rgba(255, 255, 255, 0.97);
+}
+
+/* ==== LOGO ==== */
+
+
+.logo-link:hover {
+  transform: translateY(-1px);
+}
+
+.logo {
+  width: 250px;
+  height: 70px;
+  /* object-fit: contain; */
+  transition: all 0.35s ease;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.06));
+}
+
+header.scrolled .logo {
+  width: 220px;
+  height: 62px;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* ==== NAVIGATION ==== */
+nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: #0097A7;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #FFA500;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a:hover,
+nav a.active {
+  color: #FFA500;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+nav a:focus {
+  outline: 2px solid #FFA500;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ==== BOUTON DECONNEXION ==== */
+.logout-btn {
+  background: #FFA500;
+  border: none;
+  color: #FFFFFF;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 87, 168, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logout-btn:hover {
+  background: #e69500;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 87, 168, 0.18);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 1024px) {
+  header {
+    padding: 1rem 2rem;
+  }
+  nav {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    text-align: center;
+  }
+
+  header.scrolled {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .logo {
+    width: 200px;
+    height: 56px;
+  }
+
+  header.scrolled .logo {
+    width: 180px;
+    height: 50px;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  .logout-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 180px;
+    height: 50px;
+  }
+  nav {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==== ACCESSIBILITÉ ==== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==== ÉTAT ACTIF (ex: page courante) ==== */
+nav a.active {
+  font-weight: 700;
+}

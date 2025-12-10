@@ -1,0 +1,152 @@
+<app-header-commun></app-header-commun>
+
+<div class="profile-container">
+
+  <h2>Modifier mon profil</h2>
+
+  <div class="profile-box">
+
+    <!-- SECTION PHOTO -->
+    <div class="photo-section">
+
+      <img 
+        *ngIf="previewUrl" 
+        [src]="previewUrl" 
+        class="profile-photo"
+      />
+
+      <label class="upload-btn">
+        📷 Changer la photo
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      </label>
+
+    </div>
+
+    <!-- SECTION FORMULAIRE -->
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+
+      <!-- Nom -->
+      <label>Nom complet</label>
+      <input type="text" class="input-field" [(ngModel)]="form.name" name="name">
+
+      <!-- Email -->
+      <label>Email</label>
+      <input 
+        type="email" 
+        class="input-field" 
+        [(ngModel)]="form.email" 
+        name="email"
+        email
+        #emailRef="ngModel"
+        [disabled]="user.authProvider === 'google'"
+      >
+      <p class="error" *ngIf="emailRef.invalid && emailRef.touched">
+        Format d'email invalide.
+      </p>
+
+      <!-- Téléphone -->
+      <label>Téléphone</label>
+      <input 
+        type="text" 
+        class="input-field" 
+        [(ngModel)]="form.phone" 
+        name="phone"
+        maxlength="8"
+        minlength="8"
+        pattern="[0-9]{8}"
+        #phoneRef="ngModel"
+        (keypress)="allowOnlyNumbers($event)"
+
+      >
+      <p class="error" *ngIf="phoneRef.invalid && phoneRef.touched">
+        Le numéro doit contenir exactement 8 chiffres.
+      </p>
+
+      <!-- Ville -->
+      <label>Ville</label>
+      <input type="text" class="input-field" [(ngModel)]="form.ville" name="ville">
+
+      <!-- Bio -->
+      <label>Bio</label>
+      <textarea class="textarea-field" [(ngModel)]="form.bio" name="bio"></textarea>
+
+      <!-- Mot de passe actuel -->
+       <div *ngIf="user.authProvider === 'local'" style="width: 100%;">
+      <label>Mot de passe actuel *</label>
+      <div class="password-wrapper">
+        <input 
+          [type]="showOldPassword ? 'text' : 'password'"
+          class="input-field"
+          [(ngModel)]="form.oldPassword"
+          name="oldPassword"
+          required
+          #oldPassRef="ngModel"
+        >
+        <span class="toggle-eye" (click)="showOldPassword = !showOldPassword">
+          👁️
+        </span>
+      
+      <p class="error" *ngIf="oldPassRef.invalid && oldPassRef.touched">
+        L'ancien mot de passe est obligatoire.
+      </p>
+      </div>
+
+      <!-- Checkbox -->
+      <div class="checkbox-section">
+        <label>
+          <input type="checkbox" [(ngModel)]="changePassword" name="changePassword"/>
+          Changer le mot de passe
+        </label>
+      </div>
+
+      <!-- Nouveau mot de passe -->
+      <label>Nouveau mot de passe</label>
+      <div class="password-wrapper">
+        <input 
+          [type]="showNewPassword ? 'text' : 'password'"
+          class="input-field"
+          [(ngModel)]="form.newPassword"
+          name="newPassword"
+          [disabled]="!changePassword"
+        >
+        <span class="toggle-eye" (click)="showNewPassword = !showNewPassword">
+          👁️
+        </span>
+      </div>
+
+      <!-- Confirmer mot de passe -->
+      <label>Confirmer le mot de passe</label>
+      <div class="password-wrapper">
+        <input 
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          class="input-field"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          [disabled]="!changePassword"
+        >
+        <span class="toggle-eye" (click)="showConfirmPassword = !showConfirmPassword">
+          👁️
+        </span>
+      </div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="buttons-section">
+        <a class="cancel-link" (click)="onCancel($event)">Annuler</a>
+
+        <button 
+          class="save-btn" 
+          type="submit"
+          [disabled]="user.authProvider === 'local' && !form.oldPassword"
+        >
+          Enregistrer
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<app-chatbot-button></app-chatbot-button>
+<app-footer></app-footer>

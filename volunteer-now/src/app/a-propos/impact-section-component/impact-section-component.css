@@ -1,0 +1,37 @@
+.sectionStat {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 0 40px;
+  margin: 50px auto 0;
+
+  /* largeur max au lieu d’un width fixe */
+  max-width: 1200px;
+  width: 100%;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* TABLETTES */
+@media (max-width: 1024px) {
+  .sectionStat {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 30px;
+  }
+}
+
+/* PETITES TABLETTES / GRANDES PHONES */
+@media (max-width: 768px) {
+  .sectionStat {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 20px;
+  }
+}
+
+/* TÉLÉPHONES */
+@media (max-width: 480px) {
+  .sectionStat {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
+}

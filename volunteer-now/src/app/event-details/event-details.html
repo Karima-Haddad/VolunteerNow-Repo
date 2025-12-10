@@ -1,0 +1,108 @@
+<app-header-commun></app-header-commun>
+
+<div *ngIf="event">
+
+    <div class="event">
+        <h1>{{ event.titre }}</h1>
+
+        <div class="meta">
+            <span>📅 {{ event.date_event | date:'dd MMMM yyyy, HH:mm' }}</span>
+
+            <span  
+                [ngStyle]="{
+                    'background': event.statut === 'Ouvert' ? '#22C55E' :
+                                 (event.statut === 'Terminé' ? '#FFA500' : '#D32F2F'),
+                    'color':'white',
+                }"
+            >
+                {{ event.statut }}
+            </span>
+        </div>
+    </div>
+
+    <div class="infos">
+        <div class="lieu box">
+            <div class="icon">&#128205;</div>
+            <div>
+                <h2>LIEU</h2>
+                <p>{{ event.localisation }}</p>
+            </div>
+        </div>
+
+        <div class="categorie box">
+            <div class="icon">&#128278;</div>
+            <div>
+                <h2>CATEGORIE</h2>
+                <p>{{ event.categorie }}</p>
+            </div>
+        </div>
+
+        <div class="places box">
+            <div class="icon">&#128101;</div>
+            <div>
+                <h2>PLACES</h2>
+                <p>{{ event.nb_places }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="Description">
+        <h1>À propos de cette mission</h1>
+        <p>{{ event.description }}</p>
+    </div>
+
+    <div class="Organisation">
+        <img 
+            class="org-photo"
+            [src]="formatImageUrl(event.organisation_id?.photo)"
+            alt="Organisation"
+            />
+
+
+        <div class="details">
+            <h1>{{ event.organisation_id?.name }}</h1>
+            <p>
+            <strong>Email :</strong>
+            <a [href]="'mailto:' + event.organisation_id?.email" class="mail-link">
+                {{ event.organisation_id?.email }}
+            </a>
+            </p>
+            <p><strong>Téléphone :</strong> {{ event.organisation_id?.phone }}</p>
+            <p><strong>Ville :</strong>&#128205; {{ event.organisation_id?.ville }}</p>
+        </div>
+
+        <button class="profil" (click)="voirProfil(event.organisation_id._id)">
+            &#128100; Voir profil
+        </button>
+    </div>
+
+    <div class="Reserver" *ngIf="userRole === 'benevole'">
+
+        <!-- Aucune candidature -->
+        <button class="ReserveBTN"
+                *ngIf="candidatureStatus === 'none'"
+                (click)="participer()">
+            🤝 Participer
+        </button>
+
+        <!-- En attente -->
+        <button class="ReserveBTN pending" *ngIf="candidatureStatus === 'En attente'" disabled>
+            ⏳ Demande en attente
+        </button>
+
+        <!-- Acceptée -->
+        <button class="ReserveBTN accepted" *ngIf="candidatureStatus === 'Acceptée'" disabled>
+            ✔ Candidature acceptée
+        </button>
+
+        <!-- Refusée -->
+        <button class="ReserveBTN rejected" *ngIf="candidatureStatus === 'Refusée'" disabled>
+            ❌ Candidature refusée
+        </button>
+
+    </div>
+
+
+</div>
+
+<app-footer></app-footer>

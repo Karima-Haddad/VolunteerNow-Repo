@@ -1,0 +1,32 @@
+<nav class="header">
+  <div class="header-container">
+    
+    <!-- Logo -->
+    <div class="navbar-logo">
+      <img class="logo" src="assets/Logo-horizontale.jpg" alt="Logo">
+    </div>
+
+    <!-- Liens (desktop) -->
+    <div class="nav-links" [class.active]="isMobileMenuOpen">
+      <a routerLink="/a-propos" class="nav-item" (click)="closeMobileMenu()">
+        À propos
+      </a>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
+      <span class="bar"></span>
+      <span class="bar"></span> 
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-menu" [class.active]="isMobileMenuOpen">
+    <a routerLink="/a-propos" class="mobile-item" (click)="closeMobileMenu()">
+      <span class="nav-icon">🤝</span>
+      À propos
+    </a>
+  </div>
+</nav>
+

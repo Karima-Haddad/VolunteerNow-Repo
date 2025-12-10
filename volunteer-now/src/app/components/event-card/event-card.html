@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h3>{{ event.titre }}</h3>
+    <p class="meta">📅 {{ event.date_event | date:'mediumDate' }} • 📍 {{ event.localisation }}</p>
+    <p class="desc">{{ event.description }}</p>
+
+    <div class="card-actions">
+
+      <!-- Lien Détail -->
+      <a [routerLink]="['/detail-evenement', event._id]" class="btn btn-orange">Détail</a>
+
+      
+
+    <!-- Boutons Modifier et Supprimer → plus petits -->
+<ng-container *ngIf="isOrganization">
+  <button (click)="onEditEvent(event)" class="btn btn-green btn-action">Modifier</button>
+  <button (click)="onDeleteEvent(event)" class="btn btn-red btn-action">Supprimer</button>
+</ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+.error-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+
+  background: linear-gradient(135deg, #FFA500, #0097A7);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Grand chiffre 404 */
+h1 {
+  font-size: 150px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: pop 0.6s ease-out;
+}
+
+/* Titre */
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.2s ease-out;
+}
+
+/* Texte */
+p {
+  font-size: 20px;
+  opacity: 0.9;
+  animation: fadeIn 1.4s ease-out;
+}
+
+/* Bouton retour (si tu veux en afficher un) */
+.button {
+  margin-top: 25px;
+  padding: 12px 28px;
+  font-size: 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  color: white;
+  border: 2px solid white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  background: white;
+  color: #0097A7;
+}
+
+/* Animations */
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,12 @@
+# Fichiers sensibles
+.env
+
+# Node
+node_modules/
+
+# Angular build
+/dist/
+/build/
+
+# Logs
+*.log
